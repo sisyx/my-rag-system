@@ -1,0 +1,101 @@
+“Introduction to Neural Search Systems”
+
+## 1. What is a Neural Search System?
+
+A neural search system is a retrieval system that uses machine learning models to understand the meaning of text instead of relying only on keyword matching. Traditional search engines depend on exact word overlap between the query and documents, while neural search systems use embeddings to capture semantic similarity.
+
+This means that two sentences with different words but similar meaning can still be matched effectively.
+
+Neural search systems are widely used in modern applications such as chatbots, document assistants, and recommendation engines.
+
+---
+
+## 2. Why Not Just Use Keyword Search?
+
+Keyword search has limitations when dealing with natural language. For example, if a user searches for “how to fix a slow computer,” a keyword-based system may miss documents that say “speed up your PC” or “improve system performance.”
+
+A neural search system, on the other hand, maps both the query and documents into vector space, where similarity is based on meaning rather than exact words.
+
+This improves recall and makes the system more robust to paraphrasing.
+
+---
+
+## 3. Embeddings and Vector Space
+
+Embeddings are dense vector representations of text. Each sentence or paragraph is converted into a high-dimensional vector.
+
+In this vector space, semantically similar texts are placed closer together.
+
+For example:
+
+* “I love machine learning” and “I enjoy studying AI models” will have similar embeddings.
+* “The cat is sleeping” will be far away from both.
+
+The idea of vector similarity is the foundation of modern retrieval systems.
+
+---
+
+## 4. Chunking Documents
+
+Large documents cannot be embedded as a single unit because:
+
+* They exceed model token limits
+* They lose fine-grained meaning
+* Retrieval becomes less precise
+
+Instead, documents are split into smaller chunks.
+
+Chunking is usually done with:
+
+* Fixed size windows
+* Overlapping segments
+
+Overlap is important because it preserves context between chunks. Without overlap, important information may be split across boundaries and lost during retrieval.
+
+---
+
+## 5. Why Overlap Matters
+
+Consider the sentence:
+
+“Neural search systems are powerful because they combine embeddings with efficient indexing.”
+
+If we chunk text without overlap, this sentence might be split in half, losing meaning.
+
+With overlap, the system ensures that important context is preserved in at least one chunk.
+
+However, too much overlap increases redundancy and storage cost.
+
+---
+
+## 6. Real-World Use Cases
+
+Neural search systems are used in:
+
+* ChatGPT-style document assistants
+* Legal document search tools
+* Medical knowledge retrieval systems
+* Customer support bots
+* Enterprise knowledge bases
+
+In all these cases, the goal is the same: retrieve the most relevant context before generating an answer.
+
+---
+
+## 7. Key Takeaways
+
+* Neural search focuses on meaning, not keywords
+* Embeddings represent text in vector space
+* Chunking is necessary for large documents
+* Overlap improves context continuity
+* Retrieval quality depends heavily on how well you structure chunks
+
+---
+
+## 8. Simple Mental Model
+
+Think of the system like this:
+
+You take a book → cut it into meaningful pieces → convert each piece into coordinates → store them in space → when a question comes, you find the closest pieces → then use them to answer.
+
+That is the core idea behind Retrieval-Augmented Generation (RAG).
