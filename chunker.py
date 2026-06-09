@@ -1,4 +1,7 @@
 def chunk_text(data: str, chunk_size: int, overlap: int) -> list[str]:
+    if chunk_size <= overlap:
+        raise ValueError(f"overlap {overlap} must be less than the chunk_size")
+
     chunks_count = int(len(data) / chunk_size)
     chunks = []
     for chunk_num in range(1, chunks_count + 1):

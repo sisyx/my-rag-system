@@ -1,4 +1,4 @@
-def load_data() -> str:
-    with open("data/sample.txt", "r") as file:
+def load_document(path: str) -> str:
+    with open(path, "r") as file:
         contents = file.read()
         return contents
