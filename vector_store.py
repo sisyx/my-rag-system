@@ -16,3 +16,7 @@ class VectorStore:
     def count(self) -> int:
         """returns how many entries are in the collection"""
         return self.collection.count()
+
+    def search(self, vector: list[float], top_k: int) -> list[str]:
+        results = self.collection.query(query_embeddings=[vector], n_results=top_k)
+        return results["documents"][0]
