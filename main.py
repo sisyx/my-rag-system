@@ -3,6 +3,11 @@ from embedder import Embedder
 import loader
 from vector_store import VectorStore as Store
 from retriever import Retriever
+from generator import Generator
+import os
+
+GENERATOR_MODEL = "llama-3.1-8b-instant"
+GROQ_API_KEY = os.environ["GROQ_API_KEY"]
 
 if __name__ == "__main__":
     embedder = Embedder("sentence-transformers/all-MiniLM-L6-v2")
@@ -12,6 +17,9 @@ if __name__ == "__main__":
     store = Store("vectors", "main")
     store.store(chunks, vectors)
     retriever = Retriever(store, embedder)
-    found = retriever.retrieve("overlap", top_k=3)
-    for found_item in found:
-        print(found_item)
+    generator = Generator(GENERATOR_MODEL, GROQ_API_KEY)
+    while True:
+        question = input("your question here > ")
+        found = retriever.retrieve(question, top_k=3)
+        answers = generator.generate(question, found)
+        print(answers)
