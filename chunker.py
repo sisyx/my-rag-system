@@ -11,5 +11,8 @@ def chunk_text(data: str, chunk_size: int, overlap: int) -> list[str]:
         chunk_end = chunk_end - overlap if chunk_end > len(data) else chunk_end
         chunks.append(data[chunk_start:chunk_end])
 
-    chunks.append(data[(chunks_count * chunk_size) :])
+    last_left_chunk = data[(chunks_count * chunk_size) :]
+    if (len(last_left_chunk) != 0):
+        chunks.append(last_left_chunk)
+
     return chunks

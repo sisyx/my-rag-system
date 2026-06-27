@@ -8,6 +8,7 @@ import os
 
 GENERATOR_MODEL = "llama-3.1-8b-instant"
 GROQ_API_KEY = os.environ["GROQ_API_KEY"]
+SENTENCE_TRANSFORMER_MODEL="sentence-transformers/all-MiniLM-L6-v2"
 
 if __name__ == "__main__":
     embedder = Embedder("sentence-transformers/all-MiniLM-L6-v2")
